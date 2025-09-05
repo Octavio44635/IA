@@ -1,0 +1,278 @@
+<Diagram Name="Diagrama1">
+  <Predicate Type="Or">
+    <Name value="a S b" />
+    <Description value="" />
+    <Predicate Type="And">
+      <Name value="Preferencia" />
+      <Description value="" />
+      <Predicate Type="Or">
+        <Name value="Pref1" />
+        <Description value="" />
+        <Predicate Type="Fuzzy Variable">
+          <Name value="MAYOR( Ifavor, Icontra)" />
+          <Description value="" />
+          <UnitOfMeasurement value="" />
+          <RangeMinX value="0" />
+          <RangeMaxX value="1" />
+          <ChartFunction value="LeftHalfTrapezoidal">
+            <PointA value="0.55" />
+            <PointB value="0.555" />
+          </ChartFunction>
+        </Predicate>
+        <Predicate Type="Fuzzy Variable">
+          <Name value="PARECIDO (Ifavor_int, Icontra_int)" />
+          <Description value="" />
+          <UnitOfMeasurement value="" />
+          <RangeMinX value="0" />
+          <RangeMaxX value="1" />
+          <ChartFunction value="Trapezoidal">
+            <PointA value="0.445" />
+            <PointB value="0.45" />
+            <PointC value="0.55" />
+            <PointD value="0.555" />
+          </ChartFunction>
+        </Predicate>
+      </Predicate>
+      <Predicate Type="Or">
+        <Name value="Pref2" />
+        <Description value="" />
+        <Predicate Type="Fuzzy Variable">
+          <Name value="&gt;&gt;MAYOR (Ifavor, Icontra)" />
+          <Description value="" />
+          <UnitOfMeasurement value="" />
+          <RangeMinX value="0" />
+          <RangeMaxX value="1" />
+          <ChartFunction value="LeftHalfTrapezoidal">
+            <PointA value="0.565" />
+            <PointB value="0.65" />
+          </ChartFunction>
+        </Predicate>
+        <Predicate Type="And">
+          <Name value="Y5" />
+          <Description value="" />
+          <Predicate Type="Fuzzy Variable">
+            <Name value="MAYOR (Ifavor, Icontra)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.55" />
+              <PointB value="0.555" />
+            </ChartFunction>
+          </Predicate>
+          <Predicate Type="Fuzzy Variable">
+            <Name value="MAYOR ( Ifavor_int, Icontra_int)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.55" />
+              <PointB value="0.555" />
+            </ChartFunction>
+          </Predicate>
+        </Predicate>
+        <Predicate Type="And">
+          <Name value="Y6" />
+          <Description value="" />
+          <Predicate Type="Fuzzy Variable">
+            <Name value="PARECIDO (Ifavor, Icontra)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="Trapezoidal">
+              <PointA value="0.445" />
+              <PointB value="0.45" />
+              <PointC value="0.55" />
+              <PointD value="0.555" />
+            </ChartFunction>
+          </Predicate>
+          <Predicate Type="Fuzzy Variable">
+            <Name value="&gt;&gt;MAYOR (Ifavor_int, Icontra_int)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.565" />
+              <PointB value="0.65" />
+            </ChartFunction>
+          </Predicate>
+        </Predicate>
+      </Predicate>
+      <Predicate Type="Or">
+        <Name value="Pref3" />
+        <Description value="" />
+        <Predicate Type="Fuzzy Variable">
+          <Name value="&gt;&gt;MENOR (Icontra, mitad)" />
+          <Description value="" />
+          <UnitOfMeasurement value="" />
+          <RangeMinX value="0" />
+          <RangeMaxX value="1" />
+          <ChartFunction value="RightHalfTrapezoidal">
+            <PointA value="0.35" />
+            <PointB value="0.435" />
+          </ChartFunction>
+        </Predicate>
+        <Predicate Type="And">
+          <Name value="Y7" />
+          <Description value="" />
+          <Predicate Type="Fuzzy Variable">
+            <Name value="MENOR (Icontra, mitad)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="RightHalfTrapezoidal">
+              <PointA value="0.445" />
+              <PointB value="0.45" />
+            </ChartFunction>
+          </Predicate>
+          <Predicate Type="Fuzzy Variable">
+            <Name value="MAYOR (Ifavor_int, Icontra_int)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.55" />
+              <PointB value="0.555" />
+            </ChartFunction>
+          </Predicate>
+        </Predicate>
+        <Predicate Type="And">
+          <Name value="Y8" />
+          <Description value="" />
+          <Predicate Type="Fuzzy Variable">
+            <Name value="PARECIDO (Icontra, mitad)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="Trapezoidal">
+              <PointA value="0.445" />
+              <PointB value="0.45" />
+              <PointC value="0.55" />
+              <PointD value="0.555" />
+            </ChartFunction>
+          </Predicate>
+          <Predicate Type="Fuzzy Variable">
+            <Name value="&gt;&gt;MAYOR  (Ifavor_int, Icontra_int)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.565" />
+              <PointB value="0.65" />
+            </ChartFunction>
+          </Predicate>
+        </Predicate>
+      </Predicate>
+      <Predicate Type="And">
+        <Name value="Pref4" />
+        <Description value="" />
+        <Predicate Type="Not">
+          <Name value="No3" />
+          <Description value="" />
+          <Predicate Type="Fuzzy Variable">
+            <Name value="SIGNIF (Icontra_int)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.25" />
+              <PointB value="0.5" />
+            </ChartFunction>
+          </Predicate>
+        </Predicate>
+        <Predicate Type="Numeric Continous">
+          <Name value="I  veto" />
+          <Description value="" />
+        </Predicate>
+      </Predicate>
+    </Predicate>
+    <Predicate Type="And">
+      <Name value="Indiferencia" />
+      <Description value="" />
+      <Predicate Type="Fuzzy Variable">
+        <Name value="SIGNIF (Iindif)" />
+        <Description value="" />
+        <UnitOfMeasurement value="" />
+        <RangeMinX value="0" />
+        <RangeMaxX value="1" />
+        <ChartFunction value="LeftHalfTrapezoidal">
+          <PointA value="0.25" />
+          <PointB value="0.5" />
+        </ChartFunction>
+      </Predicate>
+      <Predicate Type="Fuzzy Variable">
+        <Name value="PARECIDO  (Ifavor, Icontra)" />
+        <Description value="" />
+        <UnitOfMeasurement value="" />
+        <RangeMinX value="0" />
+        <RangeMaxX value="1" />
+        <ChartFunction value="Trapezoidal">
+          <PointA value="0.445" />
+          <PointB value="0.45" />
+          <PointC value="0.55" />
+          <PointD value="0.555" />
+        </ChartFunction>
+      </Predicate>
+      <Predicate Type="Fuzzy Variable">
+        <Name value="PARECIDO  (Ifavor_int, Icontra_int)" />
+        <Description value="" />
+        <UnitOfMeasurement value="" />
+        <RangeMinX value="0" />
+        <RangeMaxX value="1" />
+        <ChartFunction value="Trapezoidal">
+          <PointA value="0.445" />
+          <PointB value="0.45" />
+          <PointC value="0.55" />
+          <PointD value="0.555" />
+        </ChartFunction>
+      </Predicate>
+      <Predicate Type="Not">
+        <Name value="No1" />
+        <Description value="" />
+        <Predicate Type="Fuzzy Variable">
+          <Name value="SIGNIF (Ifavor_int)" />
+          <Description value="" />
+          <UnitOfMeasurement value="" />
+          <RangeMinX value="0" />
+          <RangeMaxX value="1" />
+          <ChartFunction value="LeftHalfTrapezoidal">
+            <PointA value="0.25" />
+            <PointB value="0.5" />
+          </ChartFunction>
+        </Predicate>
+      </Predicate>
+      <Predicate Type="And">
+        <Name value="Y4" />
+        <Description value="" />
+        <Predicate Type="Not">
+          <Name value="No2" />
+          <Description value="" />
+          <Predicate Type="Fuzzy Variable">
+            <Name value="SIGNIF  (Icontra_int)" />
+            <Description value="" />
+            <UnitOfMeasurement value="" />
+            <RangeMinX value="0" />
+            <RangeMaxX value="1" />
+            <ChartFunction value="LeftHalfTrapezoidal">
+              <PointA value="0.25" />
+              <PointB value="0.5" />
+            </ChartFunction>
+          </Predicate>
+        </Predicate>
+        <Predicate Type="Numeric Continous">
+          <Name value="I veto" />
+          <Description value="" />
+        </Predicate>
+      </Predicate>
+    </Predicate>
+  </Predicate>
+</Diagram>

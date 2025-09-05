@@ -1,0 +1,66 @@
+<Data Name="Datos1" StoreData="yes">
+  <SavedData>
+    <NewDataSet>
+      <xs:schema id="NewDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="Table1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="PS" type="xs:string" minOccurs="0" />
+                    <xs:element name="PD" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:schema>
+      <Table1>
+        <PS>120</PS>
+        <PD>80</PD>
+      </Table1>
+      <Table1>
+        <PS>120</PS>
+        <PD>100</PD>
+      </Table1>
+      <Table1>
+        <PS>120</PS>
+        <PD>110</PD>
+      </Table1>
+      <Table1>
+        <PS>140</PS>
+        <PD>90</PD>
+      </Table1>
+      <Table1>
+        <PS>180</PS>
+        <PD>60</PD>
+      </Table1>
+      <Table1>
+        <PS>180</PS>
+        <PD>100</PD>
+      </Table1>
+      <Table1>
+        <PS>190</PS>
+        <PD>100</PD>
+      </Table1>
+      <Table1>
+        <PS>80</PS>
+        <PD>60</PD>
+      </Table1>
+      <Table1>
+        <PS>120</PS>
+        <PD>55</PD>
+      </Table1>
+      <Table1>
+        <PS>110</PS>
+        <PD>70</PD>
+      </Table1>
+      <Table1>
+        <PS>130</PS>
+        <PD>80</PD>
+      </Table1>
+    </NewDataSet>
+  </SavedData>
+</Data>

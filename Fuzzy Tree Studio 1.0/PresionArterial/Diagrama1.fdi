@@ -1,0 +1,28 @@
+<Diagram Name="Diagrama1">
+  <Predicate Type="And">
+    <Name value="H" />
+    <Description value="El paciente es hipertenso." />
+    <Predicate Type="Fuzzy Variable">
+      <Name value="PS" />
+      <Description value="El paciente tiene presión sistólica alta." />
+      <UnitOfMeasurement value="" />
+      <RangeMinX value="0" />
+      <RangeMaxX value="200" />
+      <ChartFunction value="S_Shaped">
+        <ParameterA value="80" />
+        <ParameterB value="181,8378" />
+      </ChartFunction>
+    </Predicate>
+    <Predicate Type="Fuzzy Variable">
+      <Name value="PD" />
+      <Description value="El paciente tiene presión diastólica alta." />
+      <UnitOfMeasurement value="" />
+      <RangeMinX value="0" />
+      <RangeMaxX value="140" />
+      <ChartFunction value="S_Shaped">
+        <ParameterA value="65" />
+        <ParameterB value="93" />
+      </ChartFunction>
+    </Predicate>
+  </Predicate>
+</Diagram>

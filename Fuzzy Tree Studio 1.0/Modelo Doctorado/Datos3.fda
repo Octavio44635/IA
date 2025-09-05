@@ -1,0 +1,84 @@
+<Data Name="Datos3" StoreData="yes">
+  <SavedData>
+    <NewDataSet>
+      <xs:schema id="NewDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="Table">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MAYOR_x0028__x0020_Ifavor_x002C__x0020_Icontra_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="PARECIDO_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="_x003E__x003E_MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="MAYOR_x0020__x0028__x0020_Ifavor_int_x002C__x0020_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="PARECIDO_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="_x003E__x003E_MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="_x003E__x003E_MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="PARECIDO_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="_x003E__x003E_MAYOR_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="SIGNIF_x0020__x0028_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="I_x0020__x0020_veto" type="xs:double" minOccurs="0" />
+                    <xs:element name="SIGNIF_x0020__x0028_Iindif_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="PARECIDO_x0020__x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="PARECIDO_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="SIGNIF_x0020__x0028_Ifavor_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="SIGNIF_x0020__x0020__x0028_Icontra_int_x0029_" type="xs:double" minOccurs="0" />
+                    <xs:element name="I_x0020_veto" type="xs:double" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:schema>
+      <Table>
+        <MAYOR_x0028__x0020_Ifavor_x002C__x0020_Icontra_x0029_>1</MAYOR_x0028__x0020_Ifavor_x002C__x0020_Icontra_x0029_>
+        <PARECIDO_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</PARECIDO_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <_x003E__x003E_MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0.63999999999999968</_x003E__x003E_MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0.63999999999999968</MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <MAYOR_x0020__x0028__x0020_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</MAYOR_x0020__x0028__x0020_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <PARECIDO_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0.63999999999999968</PARECIDO_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <_x003E__x003E_MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</_x003E__x003E_MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <_x003E__x003E_MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>0</_x003E__x003E_MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>
+        <MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>0</MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>
+        <MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <PARECIDO_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>0</PARECIDO_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>
+        <_x003E__x003E_MAYOR_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</_x003E__x003E_MAYOR_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <SIGNIF_x0020__x0028_Icontra_int_x0029_>0</SIGNIF_x0020__x0028_Icontra_int_x0029_>
+        <I_x0020__x0020_veto>1</I_x0020__x0020_veto>
+        <SIGNIF_x0020__x0028_Iindif_x0029_>0.72000000000000064</SIGNIF_x0020__x0028_Iindif_x0029_>
+        <PARECIDO_x0020__x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0.63999999999999968</PARECIDO_x0020__x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <PARECIDO_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</PARECIDO_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <SIGNIF_x0020__x0028_Ifavor_int_x0029_>0</SIGNIF_x0020__x0028_Ifavor_int_x0029_>
+        <SIGNIF_x0020__x0020__x0028_Icontra_int_x0029_>0</SIGNIF_x0020__x0020__x0028_Icontra_int_x0029_>
+        <I_x0020_veto>1</I_x0020_veto>
+      </Table>
+      <Table>
+        <MAYOR_x0028__x0020_Ifavor_x002C__x0020_Icontra_x0029_>0</MAYOR_x0028__x0020_Ifavor_x002C__x0020_Icontra_x0029_>
+        <PARECIDO_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</PARECIDO_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <_x003E__x003E_MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0</_x003E__x003E_MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0</MAYOR_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <MAYOR_x0020__x0028__x0020_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</MAYOR_x0020__x0028__x0020_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <PARECIDO_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0.63999999999999968</PARECIDO_x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <_x003E__x003E_MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</_x003E__x003E_MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <_x003E__x003E_MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>0.35897435897435848</_x003E__x003E_MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>
+        <MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>0.35897435897435848</MENOR_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>
+        <MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</MAYOR_x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <PARECIDO_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>0.35897435897435848</PARECIDO_x0020__x0028_Icontra_x002C__x0020_mitad_x0029_>
+        <_x003E__x003E_MAYOR_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</_x003E__x003E_MAYOR_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <SIGNIF_x0020__x0028_Icontra_int_x0029_>0</SIGNIF_x0020__x0028_Icontra_int_x0029_>
+        <I_x0020__x0020_veto>1</I_x0020__x0020_veto>
+        <SIGNIF_x0020__x0028_Iindif_x0029_>0.72000000000000064</SIGNIF_x0020__x0028_Iindif_x0029_>
+        <PARECIDO_x0020__x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>0.63999999999999968</PARECIDO_x0020__x0020__x0028_Ifavor_x002C__x0020_Icontra_x0029_>
+        <PARECIDO_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>0.5</PARECIDO_x0020__x0020__x0028_Ifavor_int_x002C__x0020_Icontra_int_x0029_>
+        <SIGNIF_x0020__x0028_Ifavor_int_x0029_>0</SIGNIF_x0020__x0028_Ifavor_int_x0029_>
+        <SIGNIF_x0020__x0020__x0028_Icontra_int_x0029_>0</SIGNIF_x0020__x0020__x0028_Icontra_int_x0029_>
+        <I_x0020_veto>1</I_x0020_veto>
+      </Table>
+    </NewDataSet>
+  </SavedData>
+</Data>
