@@ -71,8 +71,7 @@ def mamdini(n):
 
     plt.tight_layout()
     # Concatenamos las tres funciones de pertenencia de salida juntas
-    aggregated = np.fmax(y_activation_lo,
-                        np.fmax(y_activation_me, y_activation_hi))
+    aggregated = np.fmax(y_activation_lo,np.fmax(y_activation_me, y_activation_hi))
 
     # Calculamos el resultado difuso
     tam = fuzz.defuzz(x_tam, aggregated, 'centroid')
