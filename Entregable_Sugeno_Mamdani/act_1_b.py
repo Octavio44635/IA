@@ -185,14 +185,15 @@ def dia_del_año(dia, mes, ano):
     return dias
 
 # tus datos
-datos=pd.read_csv("Entregable_Sugeno_Mamdani/spy.csv")
+datos=pd.read_csv("spy.csv")
 data_y= datos['Close'].values
 data_dia = datos['Day'].values
 data_mes = datos['Month'].values
 data_anio = datos['Year'].values
 
 data_x = [dia_del_año(data_dia[i], data_mes[i], data_anio[i]) for i in range(len(data_y))]
-
+# data_x = data_x[:3000]
+# data_y = data_y[:3000]
 # Ajustar para años consecutivos
 sum_dias = 0
 data_x_corr = [data_x[0]]  # primer día tal cual
@@ -241,8 +242,7 @@ r = fis2.evalfis(np.vstack(data_x))
 # plt.title(f"Cantidad de clusters={len(c)}")
 y_pred = fis2.evalfis(np.vstack(data_x))
 
-
-
+print(mean_squared_error(data_y, y_pred))
 #sobre muestreo
 fismuestra=fis()
 dt = 1   # paso original = 1/fs
@@ -261,7 +261,7 @@ plt.show()
 #Extrapolación
 
 fismuestra.genfis(data, ra)
-dias_agregados= np.arange(data_x[-30],data_x[-1] + 300, 1)
+dias_agregados= np.arange(0,data_x[-1] + 300, 1)
 estimacion=fismuestra.evalfis(np.vstack(dias_agregados))
 plt.figure()
 plt.title("Extrapolacion")
