@@ -24,12 +24,8 @@ phishing_websites = fetch_ucirepo(id=327)
 X = phishing_websites.data.features
 y = phishing_websites.data.targets
 
-# metadata
-print(phishing_websites.metadata)
-
-# variable information
-print(phishing_websites.variables)
-#Bloque de funciones:
+print(type(X), '\n', type(y))
+input
 
 
 def cargar_dataset():
