@@ -1,0 +1,2 @@
+python ejercicio_clasi_repoTomi.py
+pause
