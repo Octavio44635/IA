@@ -20,7 +20,7 @@ def layout(r, c, radio):
     plt.title(radio)
     plt.legend()
 
-data_y = np.loadtxt('Sugeno/Guia/samplesVDA1.txt')
+data_y = np.loadtxt('Entregable_Sugeno_Mamdani/samplesVDA1.txt')
 data_y = np.array([int(i) for i in data_y])
 Den = 400
 data_x = np.arange(0,len(data_y)/Den, 1/Den) #ponele

@@ -2,179 +2,161 @@ import numpy as np
 import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
-def mamdani(n):
-    #Tenemos tres variables de entrada y una de salida
-    #x0 = temperatura exterior
-    #x1 = temperatura interna
-    #y = tamaño de la llama
-    ##Primero: se definen sus alcances
+# --- 1. DEFINICIÓN DE UNIVERSOS Y FPS ---
+notas_examen = np.linspace(0, 100, 201)
+conceptos = np.linspace(0, 10, 201)
+notas_finales = np.linspace(0, 10, 201)
 
-    x0 = np.arange(0,30,1)
-    x1 = np.arange(50,120,(120-50)/(len(x0)))
-    n=[x0,x1]
-    ##Segundo: asignar las funciones de pertenencia de cada variable y categoria
-    fig, plot_x0 = plt.subplots(figsize = (8,3))
+# Examen 
+notas_examen_lo = fuzz.trapmf(notas_examen, [0, 0, 45, 55])
+notas_examen_md = fuzz.trimf(notas_examen, [45, 65, 85])
+notas_examen_hi = fuzz.trapmf(notas_examen, [75, 90, 100, 100])
 
-    #x0_low seria un trapezoide que llega a 0 en la derecha
-    func_x0_low = fuzz.trapmf(x0,[0,0,10,10])
-    plot_x0.plot(x0,func_x0_low, label='x0_low')
+# Concepto 
+conceptos_lo = fuzz.trimf(conceptos, [0, 0, 5])
+conceptos_md = fuzz.gaussmf(conceptos, 7, 1.5)
+conceptos_hi = fuzz.trimf(conceptos, [8, 10, 10])
 
-    #x0_med seria trapezoide, triangulo o campana de bell, en el medio
-    func_x0_med = fuzz.gaussmf(x0,15,6)
-    plot_x0.plot(x0,func_x0_med,label='x0_med')
+# Nota Final (7 clases)
+NF_pert_muy_baja = fuzz.trimf(notas_finales, [0, 0, 3.5])
+NF_pert_baja = fuzz.trimf(notas_finales, [2, 4.5, 5.5])
+NF_pert_baja_media = fuzz.trimf(notas_finales, [4.5, 5.5, 6.5])
+NF_pert_media = fuzz.trimf(notas_finales, [6.0, 7.5, 8.5])
+NF_pert_media_alta = fuzz.trimf(notas_finales, [7.5, 8.5, 9.5])
+NF_pert_alta = fuzz.trimf(notas_finales, [8.5, 9.5, 10])
+NF_pert_sobresaliente = fuzz.trimf(notas_finales, [9.8, 10, 10])
 
-    #x0_high seria un trapezoide que empieza en 0 y llega a 1
-    func_x0_high = fuzz.trapmf(x0,[20,20,30,30])
-    plot_x0.plot(x0,func_x0_high,label='x0_high')
 
-    plot_x0.set_title("x0 = temperatura exterior")
-    plot_x0.legend()
-    #x1 esta contemplado en nivel: medio, alto y critico, el nombre de las funciones
-    #es por total conveniencia
-    fig, plot_x1 = plt.subplots(figsize = (8,3))
-    func_x1_low = fuzz.trapmf(x1,[50,50,80,80])
-    plot_x1.plot(x1,func_x1_low,label='x1_low')
+reglas = [
+    (notas_examen_lo, conceptos_lo, NF_pert_muy_baja),
+    (notas_examen_lo, conceptos_md, NF_pert_baja),
+    (notas_examen_lo, conceptos_hi, NF_pert_baja_media), 
+ 
+    (notas_examen_md, conceptos_lo, NF_pert_baja_media),
+    (notas_examen_md, conceptos_md, NF_pert_media),
+    (notas_examen_md, conceptos_hi, NF_pert_media_alta),
 
-    func_x1_med = fuzz.gaussmf(x1,90,12)
-    plot_x1.plot(x1,func_x1_med,label='x1_med')
+    (notas_examen_hi, conceptos_lo, NF_pert_media),
+    (notas_examen_hi, conceptos_md, NF_pert_alta),
+    (notas_examen_hi, conceptos_hi, NF_pert_sobresaliente)
+]
 
-    func_x1_high = fuzz.trapmf(x1, [100,100,120,120])
-    plot_x1.plot(x1, func_x1_high,label='x1_high')
-    plot_x1.set_title("x1 = temperatura interna")
-    plot_x1.legend()
+valores_prueba = [(10, 1.0), (10, 10.0),(45, 1.0), (45, 5.0),(50, 10.0),(55, 1.0), (55, 10.0),(65, 3.0), 
+           (65, 7.0),(75, 10.0),(85, 1.0), (85, 5.0),(90, 10.0), (90, 3.0),(100, 1.0),(50, 7.0), 
+           (80, 10.0),(60, 10.0), (70, 3.0),(98, 9.0)]
 
-    ### Tambien hay que definir las funciones de salida, siendo el tamaño de la llama
-    #piloto, moderada, alta
+print("RESULTADOS CORREGIDOS")
+print("{:<10} | {:<10} | {:<10} ".format("Examen", "Concepto", "Nota Final"))
+print("-" * 33)
+
+plt.ion() # Activa el modo interactivo para que los gráficos aparezcan de inmediato
+
+
+
+# --- BUCLE DE SIMULACIÓN ---
+for nota_examen, concepto in valores_prueba:
     
-    y = np.arange(10,30,(30-10)/len(x0))#Cm
-    fig, plot_y = plt.subplots(figsize = (8,3))
-    #func_y_low = fuzz.trapmf(y, [10,10,15,15])
-    func_y_low = fuzz.gaussmf(y, 12,3)
-    plot_y.plot(y,func_y_low, label="y_low")
+    # Fuzzificación
+    NE_in_lo = fuzz.interp_membership(notas_examen, notas_examen_lo, nota_examen)
+    NE_in_md = fuzz.interp_membership(notas_examen, notas_examen_md, nota_examen)
+    NE_in_md = fuzz.interp_membership(notas_examen, notas_examen_md, nota_examen) 
+    NE_in_hi = fuzz.interp_membership(notas_examen, notas_examen_hi, nota_examen)
     
+    C_in_lo = fuzz.interp_membership(conceptos, conceptos_lo, concepto)
+    C_in_md = fuzz.interp_membership(conceptos, conceptos_md, concepto)
+    C_in_hi = fuzz.interp_membership(conceptos, conceptos_hi, concepto)
 
-    func_y_med = fuzz.gaussmf(y,20,6)
-    plot_y.plot(y,func_y_med, label="y_med")
-    #func_y_high = fuzz.trapmf(y,[85,85,95,95])
+   
+    # NE_in_lo, NE_in_md, NE_in_hi = NE_in_lo*2, NE_in_md2, NE_in_hi*2
+    # C_in_lo, C_in_md, C_in_hi = C_in_lo*2, C_in_md2, C_in_hi*2
     
-    func_y_high = fuzz.gaussmf(y,27,4)
-    plot_y.plot(y, func_y_high,label="y_high")
-    plot_y.set_title("y = tamaño de llama (Combustión)")
-    plot_y.legend()
-
-
-
-    tam_gen = []
-    np.random.shuffle(n[0])
-    np.random.shuffle(n[1])
-    print(n)
-    for i in range(len(n[0])):
-
-        # a = float(input('a= '))
-        # b = float(input('b= '))
-        # act_x0_low = fuzz.interp_membership(x0,func_x0_low,a)
-        # act_x0_med = fuzz.interp_membership(x0,func_x0_med,a)
-        # act_x0_high = fuzz.interp_membership(x0,func_x0_high,a)
-
-        # act_x1_low = fuzz.interp_membership(x1,func_x1_low,b)
-        # act_x1_med = fuzz.interp_membership(x1,func_x1_med,b)
-        # act_x1_high = fuzz.interp_membership(x1,func_x1_high,b)
-
-        act_x0_low = fuzz.interp_membership(x0,func_x0_low,n[0][i])
-        act_x0_med = fuzz.interp_membership(x0,func_x0_med,n[0][i])
-        act_x0_high = fuzz.interp_membership(x0,func_x0_high,n[0][i])
-
-        act_x1_low = fuzz.interp_membership(x1,func_x1_low,n[1][i])
-        act_x1_med = fuzz.interp_membership(x1,func_x1_med,n[1][i])
-        act_x1_high = fuzz.interp_membership(x1,func_x1_high,n[1][i])
+    activaciones = []
+    
+    
+    for NE_pert, C_pert, NF_pert in reglas:
+       
+        if NE_pert is notas_examen_lo:
+            NE_in = NE_in_lo
+        elif NE_pert is notas_examen_md: 
+            NE_in = NE_in_md
+        else: 
+            NE_in = NE_in_hi 
         
-
-        # print('x0: ', n[0][i], 'x1: ', n[1][i])
-
-        print(f"act_x0: {[act_x0_low, act_x0_med, act_x0_high]}, act_x1: {[act_x1_low, act_x1_med, act_x1_high]}")
-
-        # print(act_x0_low, act_x0_med, act_x0_high)
-        # print(act_x1_low, act_x1_med, act_x1_high)
-
-        #Reglas combinadas (Ejemplo de 5 reglas):
-        #TE    TI    TL
-        #Baja    Normal    Alta
-        #Baja    Alta    Moderada-Alta
-        #Baja    Crítica    Moderada-Piloto
-        #Media    Normal    Moderada
-        #Alta    Normal    Piloto
+        if C_pert is conceptos_lo: 
+            C_in = C_in_lo
+        elif C_pert is conceptos_md: 
+            C_in = C_in_md
+        else: 
+            C_in = C_in_hi 
 
         
-        #Regla de x1 ###corregir
-        
-        y_activation_rule2=np.fmin(act_x1_med,func_y_med)
-        y_activation_rule3=np.fmin(act_x1_high,func_y_low)
-        y_activation_rule1=np.fmin(act_x0_low,func_y_high)
-        y_activation_rule4=np.fmin(act_x0_med,func_y_med)
-        y_activation_rule5=np.fmin(act_x0_high,func_y_low)
-        y_activation_rule6=np.fmin(act_x1_low,np.fmax(func_y_med,np.fmax(func_y_high,func_y_low)))
-        
+        grado_activacion = np.fmin(NE_in, C_in)
+        activacion_regla = np.fmin(grado_activacion, NF_pert)
+        activaciones.append(activacion_regla)
 
-        # print('\n',y_activation_rule1,'\n', y_activation_rule2,'\n',y_activation_rule3,'\n',y_activation_rule4,'\n', y_activation_rule5,'\n',y_activation_rule6)
-        #x0:  20 x1:  52.333333333333336
-        #x0:  15 x1:  113.00000000000006
-        #x0:  17 x1:  113.00000000000006
-
-        aggregated = np.fmax(y_activation_rule1,
-                            np.fmax(y_activation_rule2,
-                                    np.fmax(y_activation_rule3,
-                                            np.fmax(y_activation_rule4,
-                                                    np.fmax(y_activation_rule5,y_activation_rule6)))))
-        print('aggregated: ', aggregated)
-        tam = fuzz.defuzz(y, aggregated, 'mom')
-        tam_activation = fuzz.interp_membership(y, aggregated, tam)
-        tam_gen.append(tam)
-
-    tam0 = np.zeros_like(y)
-
-    fig, ax0 = plt.subplots(figsize=(8, 3))
-
-    ax0.plot(y, func_y_low, 'b', linewidth=0.5, linestyle='--', )
-    ax0.plot(y, func_y_med, 'g', linewidth=0.5, linestyle='--')
-    ax0.plot(y, func_y_high, 'r', linewidth=0.5, linestyle='--')
-    ax0.fill_between(y, tam0, aggregated, facecolor='Orange', alpha=0.7)
-    ax0.plot([tam, tam], [0, tam_activation], 'k', linewidth=1.5, alpha=0.9)
-    ax0.set_title('Concatenación de las funciones de pertenencia difusa y resultado (línea)')
     
+    agregacion = np.fmax.reduce(activaciones)
+    notas_final = fuzz.defuzz(notas_finales, agregacion, 'centroid')
+    
+    print(f"{nota_examen:<10} | {concepto:<10.2f} | {notas_final:.2f}")
+    
+    #comentar de aca si no se quieren los graficos para cada valor(puede explotar su pc)
+    fig, ax2 = plt.subplots(figsize=(8, 3))
+    
+    # Graficando todas las FPs de salida para referencia
+    ax2.plot(notas_finales, NF_pert_muy_baja, 'k--', linewidth=0.5)
+    ax2.plot(notas_finales, NF_pert_baja, 'b--', linewidth=0.5)
+    ax2.plot(notas_finales, NF_pert_baja_media, 'g--', linewidth=0.5)
+    ax2.plot(notas_finales, NF_pert_media, 'y--', linewidth=0.5)
+    ax2.plot(notas_finales, NF_pert_media_alta, 'm--', linewidth=0.5)
+    ax2.plot(notas_finales, NF_pert_alta, 'r--', linewidth=0.5)
+    ax2.plot(notas_finales, NF_pert_sobresaliente, 'c--', linewidth=0.5)
+    
+    # Relleno del área agregada y línea de resultado
+    ax2.fill_between(notas_finales, 0, agregacion, facecolor='Orange', alpha=0.7)
+    nota_activation = fuzz.interp_membership(notas_finales, agregacion, notas_final)
+    ax2.plot([notas_final, notas_final], [0, nota_activation], 'k', linewidth=1.5, alpha=0.9)
+    ax2.set_title(f"Resultado E={nota_examen}, C={concepto:.2f} -> NF={notas_final:.2f}")
+    plt.tight_layout()
+    plt.show(block=False) 
+    ##hasta aca
 
-    fig = plt.figure(figsize=(12,8))
-    ax = fig.add_subplot(111, projection='3d')
-
-    # ejemplo: x en eje X, tam en eje Y, y = 0 solo para ubicarlos en plano
-    ax.scatter(x0,x1, tam_gen, c='purple', s=100)
-    ax.scatter(x0,x1,np.zeros(len(x0)), c='orange', s=50)
-
-    ax.set_xlabel("x0")
-    ax.set_ylabel("x1")
-    plt.show()
 
 
-n = []
-mamdani(n)
+
+fig, ax_ex = plt.subplots(figsize=(8, 3))
+ax_ex.plot(notas_examen, notas_examen_lo, 'b', linewidth=1.5, label='Baja (LO)')
+ax_ex.plot(notas_examen, notas_examen_md, 'g', linewidth=1.5, label='Media (MD)')
+ax_ex.plot(notas_examen, notas_examen_hi, 'r', linewidth=1.5, label='Alta (HI)')
+ax_ex.set_title("1. Funciones de Pertenencia del Examen")
+ax_ex.legend()
+plt.tight_layout()
+plt.show(block=False)
 
 
-# fig, ax0 = plt.subplots(figsize=(8, 3))
+fig, ax_con = plt.subplots(figsize=(8, 3))
+ax_con.plot(conceptos, conceptos_lo, 'b', linewidth=1.5, label='Regular (LO)')
+ax_con.plot(conceptos, conceptos_md, 'g', linewidth=1.5, label='Bueno (MD)')
+ax_con.plot(conceptos, conceptos_hi, 'r', linewidth=1.5, label='Excelente (HI)')
+ax_con.set_title("2. Funciones de Pertenencia del Concepto")
+ax_con.legend()
+plt.tight_layout()
+plt.show(block=False)
 
-        # ax0.fill_between(y, tam0, y_activation_rule1, facecolor='b', alpha=0.7)
-        # ax0.plot(y, func_y_high, 'b', linewidth=0.5, linestyle='--', )
 
-        # ax0.fill_between(y, tam0, y_activation_rule2, facecolor='g', alpha=0.7)
-        # ax0.plot(y, func_y_med, 'g', linewidth=0.5, linestyle='--')
+fig, ax_nf = plt.subplots(figsize=(8, 3))
+ax_nf.plot(notas_finales, NF_pert_muy_baja, 'k', linewidth=1.5, label='M-Baja')
+ax_nf.plot(notas_finales, NF_pert_baja, 'b', linewidth=1.5, label='Baja')
+ax_nf.plot(notas_finales, NF_pert_baja_media, 'c', linewidth=1.5, label='Baja-Media')
+ax_nf.plot(notas_finales, NF_pert_media, 'y', linewidth=1.5, label='Media')
+ax_nf.plot(notas_finales, NF_pert_media_alta, "m", linewidth=1.5, label='Media-Alta')
+ax_nf.plot(notas_finales, NF_pert_alta, 'r', linewidth=1.5, label='Alta')
+ax_nf.plot(notas_finales, NF_pert_sobresaliente, 'g', linewidth=1.5, label='Sobresaliente.')
+ax_nf.set_title("3. Funciones de Pertenencia de la Nota Final")
+ax_nf.legend(ncol=3)
+plt.tight_layout()
+plt.show(block=False)
 
-        # ax0.fill_between(y, tam0, y_activation_rule3, facecolor='g', alpha=0.7)
-        # ax0.plot(y, func_y_low, 'g', linewidth=0.5, linestyle='--')
 
-        # ax0.fill_between(y, tam0, y_activation_rule3, facecolor='r', alpha=0.7)
-        # ax0.plot(y, func_y_low, 'r', linewidth=0.5, linestyle='--')
-
-        # ax0.fill_between(y, tam0, y_activation_rule4, facecolor='r', alpha=0.7)
-        # ax0.plot(y, func_y_low, 'r', linewidth=0.5, linestyle='--')
-
-        # ax0.fill_between(y, tam0, y_activation_rule5, facecolor='r', alpha=0.7)
-        # ax0.plot(y, func_y_low, 'r', linewidth=0.5, linestyle='--')
-        # ax0.set_title('Salida de las funciones de pertenencia difusa')
+plt.ioff()
+plt.show()
