@@ -30,7 +30,7 @@ NF_pert_sobresaliente = fuzz.trimf(notas_finales, [9.8, 10, 10])
 reglas = [
     (notas_examen_lo, conceptos_lo, NF_pert_muy_baja),
     (notas_examen_lo, conceptos_md, NF_pert_baja),
-    (notas_examen_lo, conceptos_hi, NF_pert_baja_media), 
+    (notas_examen_lo, conceptos_hi, NF_pert_baja_media),
  
     (notas_examen_md, conceptos_lo, NF_pert_baja_media),
     (notas_examen_md, conceptos_md, NF_pert_media),

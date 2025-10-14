@@ -216,7 +216,7 @@ error=[]
 
 
 plt.plot(data_x, data_y, marker='o', markersize=1, linestyle='-', color='green')
-plt.title("Soy")
+plt.title("SPY")
 plt.xlabel("Fecha")
 plt.ylabel("Valor de cierre")
 plt.xticks(rotation=90)
@@ -226,79 +226,79 @@ plt.xticks(rotation=90)
 # Numero de cluster 15, valor de ra0.2, error 179.80 
 #Fueron los mejores...
 
+for i in np.arange(0.05, 0.5, 0.05):
+    r,c = subclust2(m,i)
 
 
+    # plt.figure()
+    # plt.scatter(m[:,0],m[:,1], c=r)
+    # plt.scatter(c[:,0],c[:,1], c="k",marker='X')
 
-ra = 0.2
-r,c = subclust2(m,ra)
+    fis2 = fis()
+    fis2.genfis(data, i)
+    fis2.viewInputs()
 
-# plt.figure()
-# plt.scatter(m[:,0],m[:,1], c=r)
-# plt.scatter(c[:,0],c[:,1], c="k",marker='X')
-fis2 = fis()
-fis2.genfis(data, ra)
-fis2.viewInputs()
-r = fis2.evalfis(np.vstack(data_x))
-# plt.title(f"Cantidad de clusters={len(c)}")
-y_pred = fis2.evalfis(np.vstack(data_x))
+    r = fis2.evalfis(np.vstack(data_x))
+    # plt.title(f"Cantidad de clusters={len(c)}")
 
-print(mean_squared_error(data_y, y_pred))
-#sobre muestreo
-fismuestra=fis()
-dt = 1   # paso original = 1/fs
-dt2 = dt / 2  # paso nuevo = la mitad
-fismuestra.genfis(data, ra)
-tiempos_muestra= np.arange(0,len(data_y) * dt, dt2)
-estimacion_vda=fismuestra.evalfis(np.vstack(tiempos_muestra))
+    y_pred = fis2.evalfis(np.vstack(data_x))
+    mse = mean_squared_error(data_y, y_pred)
+    print(f"Numero de cluster {len(c)}, valor de ra{i}, error {mse:.2f} ")
+    reglas.append(len(c))
+    error.append(mse)
+mse = mean_squared_error(data_y, y_pred)
 plt.figure()
-plt.title("Sobremuestreo")
-plt.xlabel("Tiempo")
-plt.ylabel("VDA")
-plt.plot(tiempos_muestra,estimacion_vda)
-plt.plot(data_x,data_y,"k",linestyle="--")
-plt.plot(data_x,r,linestyle=':')
+plt.plot(reglas,error,linestyle="--")
+
+
 plt.show()
+
+
+# ra = 0.2
+# r,c = subclust2(m,ra)
+
+# # plt.figure()
+# # plt.scatter(m[:,0],m[:,1], c=r)
+# # plt.scatter(c[:,0],c[:,1], c="k",marker='X')
+# fis2 = fis()
+# fis2.genfis(data, ra)
+# fis2.viewInputs()
+# r = fis2.evalfis(np.vstack(data_x))
+# # plt.title(f"Cantidad de clusters={len(c)}")
+# y_pred = fis2.evalfis(np.vstack(data_x))
+
+# print(mean_squared_error(data_y, y_pred))
+
+# #sobre muestreo
+# fismuestra=fis()
+# dt = 1   # paso original = 1/fs
+# dt2 = dt / 2  # paso nuevo = la mitad
+# fismuestra.genfis(data, ra)
+# tiempos_muestra= np.arange(0,len(data_y) * dt, dt2)
+# estimacion_vda=fismuestra.evalfis(np.vstack(tiempos_muestra))
+# plt.figure()
+# plt.title("Sobremuestreo")
+# plt.xlabel("Tiempo")
+# plt.ylabel("Close")
+# plt.plot(tiempos_muestra,estimacion_vda)
+# plt.plot(data_x,data_y,"k",linestyle="--")
+# plt.plot(data_x,r,linestyle=':')
+# plt.show()
 #Extrapolación
 
-fismuestra.genfis(data, ra)
-dias_agregados= np.arange(0,data_x[-1] + 300, 1)
-estimacion=fismuestra.evalfis(np.vstack(dias_agregados))
-plt.figure()
-plt.title("Extrapolacion")
-plt.xlabel("Tiempo")
-plt.ylabel("Close")
-plt.plot(dias_agregados,estimacion, "r", linestyle="--")
-plt.plot(data_x,data_y,"k",linestyle="--")
-plt.show()
-
-
-# for i in np.arange(0.05, 1, 0.05):
-#     r,c = subclust2(m,i)
-
-
-#     # plt.figure()
-#     # plt.scatter(m[:,0],m[:,1], c=r)
-#     # plt.scatter(c[:,0],c[:,1], c="k",marker='X')
-
-#     fis2 = fis()
-#     fis2.genfis(data, i)
-#     fis2.viewInputs()
-
-#     r = fis2.evalfis(np.vstack(data_x))
-#     # plt.title(f"Cantidad de clusters={len(c)}")
-
-#     y_pred = fis2.evalfis(np.vstack(data_x))
-#     mse = mean_squared_error(data_y, y_pred)
-#     print(f"Numero de cluster {len(c)}, valor de ra{i}, error {mse:.2f} ")
-#     reglas.append(len(c))
-#     error.append(mse)
-# mse = mean_squared_error(data_y, y_pred)
-# print(f"Numero de cluster {len(c)}, valor de ra {ra}, error {mse:.2f} ")
+# fismuestra.genfis(data, ra)
+# dias_agregados= np.arange(0,data_x[-1] + 300, 1)
+# estimacion=fismuestra.evalfis(np.vstack(dias_agregados))
 # plt.figure()
-# plt.plot(reglas,error,linestyle="--")
+# plt.title("Extrapolacion")
+# plt.xlabel("Tiempo")
+# plt.ylabel("Close")
+# plt.plot(dias_agregados,estimacion, "r", linestyle="--")
+# plt.plot(data_x,data_y,"k",linestyle="--")
+# plt.show()
 
 
-plt.show()
+
 
 
 
